@@ -1,0 +1,8 @@
+13/11/2018 00:31:59
+Results for 100 rounds
+Rank,Robot Name,    Total Score    ,Survival,Surv Bonus,Bullet Dmg,Bullet Bonus,Ram Dmg * 2,Ram Bonus, 1sts , 2nds , 3rds 
+1st,projetoIA.CrazyTrainVersion1*,28503 (40%),7700,1440,13793,1912,3444,214,48,2,6
+2nd,sample.RamFire,15894 (22%),6500,210,6474,274,1721,715,7,33,43
+3rd,sample.Walls,15885 (22%),7850,1140,6184,526,148,37,39,10,21
+4th,sample.Crazy,11350 (16%),7900,180,2679,72,510,9,7,54,30
+$

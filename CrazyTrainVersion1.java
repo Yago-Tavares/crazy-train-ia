@@ -18,6 +18,7 @@ public class CrazyTrainVersion1 extends AdvancedRobot {
     
     // Seta poder de fogo da arma
     private double poderDeFogo = 2.0;
+    private double aux_poderDeFogo = 2.0;
     private static double direcaoLateral;
     private static double velocidadeInimigo;
     private static Movimento movimento;
@@ -44,8 +45,7 @@ public class CrazyTrainVersion1 extends AdvancedRobot {
     }
 
     public void onScannedRobot(ScannedRobotEvent e) {
-	    System.out.println("Encontrou robo");
-		poderDeFogo = 2.0;
+		poderDeFogo = aux_poderDeFogo;
 		// angulo do inimigo em relação ao robo
         double rolamentoInimigo = getHeadingRadians() + e.getBearingRadians();
         double distanciaInimigo = e.getDistance();
@@ -85,6 +85,24 @@ public class CrazyTrainVersion1 extends AdvancedRobot {
         movimento.onScannedRobot(e);
         setTurnRadarRightRadians(Utils.normalRelativeAngle(rolamentoInimigo - getRadarHeadingRadians()) * 2);
     }
+	
+	public void onHitRobot(HitRobotEvent event) {
+ 	   int num_inimigos = getOthers();
+	   if(num_inimigos < 2){
+	      aux_poderDeFogo = 7;
+	   }
+       if (event.getBearing() > -90 && event.getBearing() <= 90 && num_inimigos >= 2) {
+    	    System.out.println("Colidiu no 90");
+    	    System.out.println(event.getBearing());
+            back(100);
+            turnRadarRightRadians(0.8);
+       } else if(num_inimigos >= 2) {
+			ahead(100);
+            turnRadarRightRadians(0.8);
+       	    System.out.println("Colidiu fora dos 90");
+      	    System.out.println(event.getBearing());
+       }
+   }
 }
 
 class AtaqueEmOnda extends Condition{
